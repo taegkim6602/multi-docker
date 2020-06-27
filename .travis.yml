@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  -  docker build -t taegkim6602/react-test -f ./client/Dockerfile.dev ./client
+  -  docker build -t sds212/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run taegkim6602/react-test npm test -- --coverage
+  - docker run -e CI=true sds212/react-test npm test
 
 after_success:
-  - docker build -t taegkim6602/multi-client ./client
-  - docker build -t taegkim6602/multi-nginx ./nginx
-  - docker build -t taegkim6602/multi-server ./server
-  - docker build -t taegkim6602/multi-worker ./worker
+  - docker build -t sds212/multi-client ./client
+  - docker build -t sds212/multi-nginx ./nginx
+  - docker build -t sds212/multi-server ./server
+  - docker build -t sds212/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login - u "DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push taegkim6602/mult-client
-  - docker push taegkim6602/mult-nginx
-  - docker push taegkim6602/mult-server
-  - docker push taegkim6602/mult-worker
+  - docker push sds212/mult-client
+  - docker push sds212/mult-nginx
+  - docker push sds212/mult-server
+  - docker push sds212/mult-worker
