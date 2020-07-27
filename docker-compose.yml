@@ -19,7 +19,7 @@ services:
   api:
     build:
       dockerfile: Dockerfile.dev
-      context: ./server
+      context: ./nginx
     volumes:
       - /app/node_modules
       - ./server:/app
