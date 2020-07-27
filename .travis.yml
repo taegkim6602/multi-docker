@@ -21,7 +21,7 @@ after_success:
   - docker push sds212/multi-server
   - docker push sds212/multi-worker
 
-deploy: 
+deploy:
   edge: true
   provider: elasticbeanstalk
   region: ap-northeast-2
